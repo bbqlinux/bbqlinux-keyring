@@ -37,6 +37,10 @@ while read -ra data; do
 done < master-keyids
 ${GPG} --import-ownertrust < bbqlinux-trusted 2>/dev/null
 
+if [ ! -f bbqlinux-trusted ]; then
+	touch bbqlinux-trusted
+fi
+
 while read -ra data; do
 	keyid="${data[0]}"
 	${GPG} --recv-keys ${keyid} &>/dev/null
@@ -66,6 +70,10 @@ while read -ra data; do
 		echo "key is still fully trusted: ${keyid} ${username}"
 	fi
 done < packager-revoked-keyids
+
+if [ ! -f bbqlinux-revoked ]; then
+	touch bbqlinux-revoked
+fi
 
 cat master/*.asc packager/*.asc packager-revoked/*.asc > bbqlinux.gpg
 

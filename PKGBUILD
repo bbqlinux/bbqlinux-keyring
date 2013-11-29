@@ -2,7 +2,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx [at] bbqlinux [dot] org>
 
 pkgname=bbqlinux-keyring
-pkgver=20131125
+pkgver=20131129
 pkgrel=1
 pkgdesc='BBQLinux PGP keyring'
 arch=('any')
